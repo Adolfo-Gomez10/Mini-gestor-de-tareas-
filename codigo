@@ -1,0 +1,37 @@
+Mini-gestor-de-tareas
+# Mini Gestor de Tareas (Simple)
+
+tareas = []  # Lista para guardar las tareas
+
+def agregar(descripcion):
+    tareas.append([descripcion, False])  # [Descripción, Completada]
+
+def completar(indice):
+    if 0 <= indice < len(tareas):
+        tareas[indice][1] = True
+
+def eliminar(indice):
+    if 0 <= indice < len(tareas):
+        del tareas[indice]
+
+def listar():
+    for i, tarea in enumerate(tareas):
+        estado = "Completada" if tarea[1] else "Pendiente"
+        print(f"{i}. {tarea[0]} - {estado}")
+
+while True:
+    print("\n1. Agregar\n2. Completar\n3. Eliminar\n4. Listar\n5. Salir")
+    opcion = input("Opción: ")
+
+    if opcion == "1":
+        agregar(input("Tarea: "))
+    elif opcion == "2":
+        listar()
+        completar(int(input("Índice: ")))
+    elif opcion == "3":
+        listar()
+        eliminar(int(input("Índice: ")))
+    elif opcion == "4":
+        listar()
+    elif opcion == "5":
+        break
